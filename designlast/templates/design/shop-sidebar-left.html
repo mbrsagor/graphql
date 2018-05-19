@@ -1,0 +1,169 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %} Category {% endblock %}
+
+{% block content %}
+
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul>
+                            <li><a href="{% url 'homepage' %}">Home</a></li>
+                            <li class="active">Product Category Page</li>
+                        </ul><!-- end breadcrumb -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </div><!-- end breadcrumbs -->
+
+        <!-- start section -->
+        <section class="section white-backgorund">
+            <div class="container">
+                <div class="row">
+                    <!-- start sidebar -->
+                    <div class="col-sm-3">
+                        <div class="widget">
+                            <h6 class="subtitle">Categories</h6>
+
+                            <ul class="list list-unstyled">
+                              {% if cat_widget_item %}
+                              {% for cat_widget in cat_widget_item %}
+                                <li>
+                                    <div class="checkbox-input checkbox-default">
+                                        <input id="mens-category" class="styled" type="checkbox" checked>
+                                        <label for="mens-category">
+                                            {{cat_widget.name}}
+                                        </label>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div><!-- end widget -->
+                        <div class="widget">
+                            <h6 class="subtitle">Prices</h6>
+
+                            <form method="post" class="price-range" data-start-min="250" data-start-max="650" data-min="0" data-max="1000" data-step="1">
+                                <div class="ui-range-values">
+                                    <div class="ui-range-value-min">
+                                        $<span></span>
+                                        <input type="hidden">
+                                    </div> -
+                                    <div class="ui-range-value-max">
+                                        $<span></span>
+                                        <input type="hidden">
+                                    </div>
+                                </div>
+                                <div class="ui-range-slider"></div>
+                                <button type="submit" class="btn btn-default btn-block btn-md">Filter</button>
+                            </form>
+                        </div><!-- end widget -->
+                        <div class="widget">
+
+                            <h6 class="subtitle">Brands</h6>
+
+                            <ul class="list list-unstyled">
+                              {% if brand_name %}
+                              {% for brand in brand_name %}
+                                <li>
+                                    <div class="checkbox-input">
+                                        <input id="armani-brand" class="styled" type="checkbox" checked>
+                                        <label for="armani-brand">
+                                            {{brand.name}}
+                                        </label>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                            {% endif %}
+                            </ul>
+                        </div><!-- end widget -->
+                        <div class="widget">
+                            <h6 class="subtitle">Colors</h6>
+                            <ul class="list list-unstyled">
+                              {% if color_name %}
+                              {% for color in color_name %}
+                                <li>
+                                    <div class="checkbox-input">
+                                        <input id="red-color" class="styled" type="checkbox" checked>
+                                        <label for="red-color">
+                                            {{color.name}}
+                                        </label>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div><!-- end widget -->
+
+                        <div class="widget">
+                            <h6 class="subtitle">New Collection</h6>
+                            <figure>
+                                <a href="javascript:void(0);">
+                                    <img src="{% static 'img/products/men_06.jpg' %}" alt="collection">
+                                </a>
+                            </figure>
+                        </div><!-- end widget -->
+                    </div><!-- end col -->
+                    <!-- end sidebar -->
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-12 text-left">
+                                <h2 class="title">Shop with Category</h2>
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+
+                        <hr class="spacer-5"><hr class="spacer-20 no-border">
+
+                        <div class="row column-3">
+
+                          {% if cat %}
+                          {% for item in cat %}
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail store style1">
+                                    <div class="header">
+                                        <figure class="layer">
+                                            <a href="javascript:void(0);">
+                                                <img src="/media/{{item.image}}" alt="">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                    <div class="caption">
+                                        <h6 class="regular"><a href="{% url 'Single_page_views' item.id %}">{{ item.name }}</a></h6>
+                                        <div class="price">
+                                            <small class="amount off">$ {{ item.discount_price }}</small>
+                                            <span class="amount text-primary">$ {{ item.price }}</span>
+                                        </div>
+                                        <a href="{{item.order_now_link}}"><i class="fa fa-cart-plus mr-5"></i>Order Now</a>
+                                    </div><!-- end caption -->
+                                </div><!-- end thumbnail -->
+                            </div><!-- end col -->
+                            {% endfor %}
+                            {% endif %}
+                        </div><!-- end row -->
+
+                        <hr class="spacer-10 no-border">
+
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <nav>
+                                    <ul class="pagination">
+                                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li class="active"><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                                    </ul>
+                                </nav>
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+
+            </div><!-- end container -->
+        </section>
+        <!-- end section -->
+{% endblock %}

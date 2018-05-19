@@ -1,0 +1,53 @@
+{% extends 'app/base_admin.html' %}
+{% load static %}
+
+{% block title %} Add Category {% endblock %}
+
+{% block body %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h4 class="page-title">Add Category</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form method="POST">
+                  {% csrf_token %}
+                    <div class="form-group">
+                        <label>Category Name</label>
+                        {{form.name}}
+                    </div>
+                    <div class="m-t-20">
+                        <button class="btn btn-primary btn-lg">Publish</button>
+                    </div>
+                </form>
+                <br/>
+                <br/>
+                <div class="table-responsive">
+                  <table class="table table-border custom-table m-b-0">
+                    <thead>
+                      <tr>
+                        <th>Category Name</th>
+                        <th>Create At</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% if category_obj %}
+                      {% for cat in category_obj %}
+                      <tr>
+                        <th>{{cat.name}}</th>
+                        <th>{{cat.create_at}}</th>
+                      </tr>
+                      {% endfor %}
+                      {% endif %}
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

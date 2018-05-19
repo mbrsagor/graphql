@@ -1,0 +1,47 @@
+{% extends 'app/base_admin.html' %}
+{% load static %}
+
+{% block title %} List of Product {% endblock %}
+
+{% block body %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-border custom-table m-b-0">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Product Id</th>
+                                <th>Created Date</th>
+                                <th>Color</th>
+                                <th>Delete Product</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          {% if product_obj %}
+                          {% for item in product_obj %}
+                            <tr>
+                                <td>
+                                    <div class="product-det">
+                                        <img src="/media/{{item.image}}" alt="">
+                                        <div class="product-desc">
+                                            <h2>{{item.name}}</h2>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{item.product_code}}</td>
+                                <td>{{item.publish_on}}</td>
+                                <td>{{item.color}}</td>
+                                <td><span class="label label-danger-border"><a href="{% url 'delete_product_viwes' item.id %}">Delete</a></span></td>
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

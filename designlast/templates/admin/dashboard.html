@@ -1,0 +1,80 @@
+{% extends 'app/base_admin.html' %}
+{% load static %}
+
+
+{% block title %} Dashboard {% endblock %}
+
+        {% block body %}
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-lg-4">
+                        <div class="dash-widget dash-widget5">
+                            <span class="dash-widget-icon bg-success"><i class="fa fa-money" aria-hidden="true"></i></span>
+                            <div class="dash-widget-info">
+                                <h3>{{count_product}}</h3>
+                                <span>Total Product</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-lg-4">
+                        <div class="dash-widget dash-widget5">
+                            <span class="dash-widget-icon bg-warning"><i class="fa fa-files-o"></i></span>
+                            <div class="dash-widget-info">
+                                <h3>{{count_category}}</h3>
+                                <span>Total Category</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-lg-4">
+                        <div class="dash-widget dash-widget5">
+                            <span class="dash-widget-icon bg-info"><i class="fa fa-user-o" aria-hidden="true"></i></span>
+                            <div class="dash-widget-info">
+                                <h3>1072</h3>
+                                <span>Total Users</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="panel panel-table">
+                            <div class="panel-heading">
+                                <h3>Lastst Product</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped custom-table m-b-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Product Name</th>
+                                                <th>Color</th>
+                                                <th>Publish on</th>
+                                                <th>Update on</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                          {% if latest_product %}
+                                          {% for item in latest_product %}
+                                            <tr>
+                                                <td>{{item.name}}</td>
+                                                <td>
+                                                    <h2><a href="#">{{item.color}}</a></h2>
+                                                </td>
+                                                <td>{{item.publish_on}}</td>
+                                                <td>{{item.update_on}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% endif %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}

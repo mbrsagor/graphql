@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
+    <title>{% block title %} {% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/fullcalendar.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/dataTables.bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/select2.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/bootstrap-datetimepicker.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/plugins/morris/morris.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+    <!--[if lt IE 9]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="header">
+            <div class="header-left">
+                <a href="{% url 'dashboard_views' %}" class="logo">
+                    <img src="{% static 'assets/img/logo.png' %}" width="60" height="40" alt="">
+                </a>
+            </div>
+            <div class="page-title-box pull-left">
+                <img src="assets/img/logo.png" width="40" height="40" alt="">
+            </div>
+            <a id="mobile_btn" class="mobile_btn pull-left" href="#sidebar"><i class="fa fa-bars" aria-hidden="true"></i></a>
+            <ul class="nav navbar-nav navbar-right user-menu pull-right">
+                <li class="dropdown">
+                    <a href="profile.html" class="dropdown-toggle user-link" data-toggle="dropdown" title="Admin">
+                        <span class="user-img"><img class="img-circle" src="{% static 'assets/img/user.jpg' %}" width="40" alt="Admin">
+							<span class="status online"></span></span>
+                        <span>Admin</span>
+                        <i class="caret"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'logout_views' %}">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="active">
+                            <a href="{% url 'dashboard_views' %}"><i class="fa fa-dashboard"></i> Dashboard</a>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span> Ecommerce </span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled" style="display: none;">
+                                <li><a href="{% url 'Products_View' %}"> Products </a></li>
+                                <li><a href="{% url 'add_prodct_views' %}"> Add Product </a></li>
+                                <li><a href="#"> Edit Product </a></li>
+                                <li><a href="{% url 'listOf_product_viwes' %}"> Delete Product </a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'category_views' %}"><i class="fa fa-tags" aria-hidden="true"></i>  Add Category </a></li>
+                        <li><a href="{% url 'slider_views' %}"><i class="fa fa-sliders" aria-hidden="true"></i> Add Slider </a></li>
+                        <li><a href="{% url 'add_Color_Views' %}"><i class="fas fa-paint-brush"></i>  Add Color </a></li>
+                        <li><a href="{% url 'adding_brand_views' %}"><i class="fa fa-amazon"></i> Add Brand </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+{% block body %}
+{% endblock %}
+</div>
+<div class="sidebar-overlay" data-reff=""></div>
+<script type="text/javascript" src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/js/jquery.slimscroll.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/js/select2.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/js/moment.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/plugins/morris/morris.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/plugins/raphael/raphael-min.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/js/app.js' %}"></script>
+</body>
+
+</html>

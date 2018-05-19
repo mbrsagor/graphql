@@ -1,0 +1,107 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %} Contact-US {% endblock %}
+
+{% block content %}
+
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul>
+                            <li><a href="{% url 'homepage' %}">Home</a></li>
+                            <li class="active">Contact Us</li>
+                        </ul><!-- end breadcrumb -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </div><!-- end breadcrumbs -->
+
+        <!-- start section -->
+        <section class="light-background">
+            <div class="container-fluid">
+                <div class="row grid-space-0">
+                    <div class="col-sm-12">
+                        <div class="map" id="map"></div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
+        <!-- end section -->
+
+        <!-- start section -->
+        <section class="section white-backgorund">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="title-wrap">
+                            <h2 class="title lines">Contact Us</h2>
+                        </div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+
+                <div class="row column-3">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="icon-boxes style1">
+                            <div class="icon">
+                                <i class="fa fa-commenting-o text-warning"></i>
+                            </div><!-- end icon -->
+                            <div class="box-content">
+                                <h6 class="thin">Need Help?</h6>
+                                <h5 class="text-warning">Send Message from Us</h5>
+                            </div>
+                        </div><!-- icon-box -->
+                    </div><!-- end col -->
+                    <div class="col-sm-6 col-md-4">
+                        <div class="icon-boxes style1">
+                            <div class="icon">
+                                <i class="fa fa-phone text-info"></i>
+                            </div><!-- end icon -->
+                            <div class="box-content">
+                                <h6 class="thin">Quick question?</h6>
+                                <h5 class="text-info">Call - 123 456 789!</h5>
+                            </div>
+                        </div><!-- icon-box -->
+                    </div><!-- end col -->
+                    <div class="col-sm-6 col-md-4">
+                        <div class="icon-boxes style1">
+                            <div class="icon">
+                                <i class="fa fa-envelope-o text-success"></i>
+                            </div><!-- end icon -->
+                            <div class="box-content">
+                                <h6 class="thin">or send us e-mail</h6>
+                                <h5 class="text-success">Info@designlast.com</h5>
+                            </div>
+                        </div><!-- icon-box -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+
+                <hr class="spacer-40 no-border">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        <form method="POST">
+                          {% csrf_token %}
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                {{form.name}}
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                {{form.email}}
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="message">Message</label>
+                                {{form.message}}
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-default round btn-lg" value="Submit">
+                            </div>
+                        </form>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
+        <!-- end section -->
+
+{% endblock %}

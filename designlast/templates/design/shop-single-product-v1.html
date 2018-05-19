@@ -1,0 +1,135 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %} Shop {{single_product.name}} {% endblock %}
+
+{% block content %}
+        <div class="breadcrumbs">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul>
+                            <li><a href="{% url 'homepage' %}">Home</a></li>
+                            <li class="active">{{single_product.name}}</li>
+                        </ul><!-- end breadcrumb -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </div><!-- end breadcrumbs -->
+
+        <!-- start section -->
+        <section class="section white-backgorund">
+            <div class="container">
+                <div class="row">
+                    <!-- start sidebar -->
+                    <div class="col-sm-4">
+                        <div class="sinlge_img">
+                          <img src="/media/{{single_product.image}}" alt="">
+                        </div>
+                    </div><!-- end col -->
+                    <!-- end sidebar -->
+                    <div class="col-sm-8">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="title">{{single_product.name}}</h2>
+                                    <p class="text-gray alt-font">Product code: {{single_product.product_code}}</p>
+
+                                    <ul class="list list-inline">
+                                        <li><h6 class="text-danger text-xs">$179.99</h6></li>
+                                        <li><h5 class="text-primary">$79.99</h5></li>
+                                        <li>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                        </li>
+                                        <li><a href="javascript:void(0);">(4 reviews)</a></li>
+                                    </ul>
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+
+                        <hr class="spacer-5"><hr class="spacer-10 no-border">
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>
+                                  {{single_product.description}}
+                                </p>
+                                <hr class="spacer-15">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                        <select class="form-control" name="select">
+                                            <option value="" selected>Color</option>
+                                            <option value="red">Red</option>
+                                            <option value="green">Green</option>
+                                            <option value="blue">Blue</option>
+                                        </select>
+                                    </div><!-- end col -->
+                                </div><!-- end row -->
+                                <hr class="spacer-15">
+
+                                <ul class="list list-inline">
+                                    <li><a href="#" type="button" class="btn btn-default btn-md round"><i class="fa fa-shopping-basket mr-5"></i>Direct Order</a></li>
+                                    <li>Visit Our Social Media: </li>
+                                    <li>
+                                        <ul class="social-icons style1">
+                                            <li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                                            <li class="twitter"><a href="https://www.twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                            <li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+
+                <hr class="spacer-60">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="mb-20">Related Products</h4>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div id="owl-demo" class="owl-carousel column-4 owl-theme">
+                          {% if related_porduct %}
+                          {% for item in related_porduct %}
+                            <div class="item">
+                                <div class="thumbnail store style1">
+                                    <div class="header">
+                                        <figure>
+                                            <a href="{% url 'Single_page_views' item.id %}">
+                                                <img src="/media/{{item.image}}" alt="">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                    <div class="caption">
+                                        <h6 class="regular"><a href="{% url 'Single_page_views' item.id %}">{{item.name}}</a></h6>
+                                        <div class="price">
+                                            <small class="amount off">$ {{item.discount_off_price}}</small>
+                                            <span class="amount text-primary">$ {{item.price}}</span>
+                                        </div>
+                                        <span class="product-badge bottom left text-warning">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </span>
+                                    </div><!-- end caption -->
+                                </div><!-- end thumbnail -->
+                            </div><!-- end item -->
+                            {% endfor %}
+                            {% endif %}
+                        </div><!-- end owl carousel -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
+        <!-- end section -->
+
+        {% endblock %}

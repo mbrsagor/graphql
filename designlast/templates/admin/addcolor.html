@@ -1,0 +1,56 @@
+{% extends 'app/base_admin.html' %}
+{% load static %}
+
+{% block title %} Add Color {% endblock %}
+
+{% block body %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h4 class="page-title">Add Color</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form method="POST">
+                  {% csrf_token %}
+
+                    <div class="form-group">
+                        <label>Adding Products Color</label>
+                        <div>
+                            {{form.name}}
+                        </div>
+                    </div>
+                    <div class="m-t-20">
+                        <button class="btn btn-primary btn-lg">Publish</button>
+                    </div>
+                </form>
+                <br/>
+                <br/>
+                <div class="table-responsive">
+                  <table class="table table-border custom-table m-b-0">
+                    <thead>
+                      <tr>
+                        <th>Color Name</th>
+                        <th>Create At</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% if color_obj %}
+                      {% for color in color_obj %}
+                      <tr>
+                        <th>{{color.name}}</th>
+                        <th>{{color.create_at}}</th>
+                      </tr>
+                      {% endfor %}
+                      {% endif %}
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

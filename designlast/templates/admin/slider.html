@@ -1,0 +1,35 @@
+{% extends 'app/base_admin.html' %}
+{% load static %}
+
+{% block title %} Add Product {% endblock %}
+
+{% block body %}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h4 class="page-title">Add Slider</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+
+                    <div class="form-group">
+                        <label>Product Images</label>
+                        <div>
+                            {{form.image}}
+                            <small class="help-block">Max. file size: 50 MB. Allowed images: jpg, gif, png. Maximum 10 images only.</small>
+                        </div>
+                    </div>
+                    <div class="m-t-20">
+                        <button class="btn btn-primary btn-lg">Publish</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
