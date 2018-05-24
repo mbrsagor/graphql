@@ -42,32 +42,8 @@
                 </ul>
 
                 <ul class="topBarNav pull-right">
-                    <li class="linkdown">
-                        <a href="javascript:void(0);">
-                            <i class="fa fa-usd mr-5"></i>
-                            USD
-                            <i class="fa fa-angle-down ml-5"></i>
-                        </a>
-                        <ul class="w-100">
-                            <li><a href="javascript:void(0);"><i class="fa fa-eur mr-5"></i>EUR</a></li>
-                            <li class="active"><a href="javascript:void(0);"><i class="fa fa-usd mr-5"></i>USD</a></li>
-                            <li><a href="javascript:void(0);"><i class="fa fa-gbp mr-5"></i>GBP</a></li>
-                        </ul>
-                    </li>
-                    <li class="linkdown">
-                        <a href="javascript:void(0);">
-                            <img src="img/flags/flag-french.jpg" class="mr-5" alt="">
-                            <span class="hidden-xs">
-                                French
-                                <i class="fa fa-angle-down ml-5"></i>
-                            </span>
-                        </a>
-                        <ul class="w-100">
-                            <li><a href="javascript:void(0);"><img src="img/flags/flag-english.jpg" class="mr-5" alt="">English</a></li>
-                            <li class="active"><a href="javascript:void(0);"><img src="img/flags/flag-french.jpg" class="mr-5" alt="">French</a></li>
-                            <li><a href="javascript:void(0);"><img src="img/flags/flag-german.jpg" class="mr-5" alt="">German</a></li>
-                            <li><a href="javascript:void(0);"><img src="img/flags/flag-spain.jpg" class="mr-5" alt="">Spain</a></li>
-                        </ul>
+                    <li style="color:#fff" class="linkdown">
+                        Service 24 hours 7 days
                     </li>
                 </ul>
             </div><!-- end container -->
@@ -242,88 +218,7 @@
         <script type="text/javascript" src="{% static 'js/pace.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/star-rating.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/wow.min.js' %}"></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
-        <script type="text/javascript" src="{% static 'js/gmaps.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/swiper.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                // Contact Map
-                if ($("#map").length > 0)
-                {
-                    var map;
-
-                    map = new GMaps({
-                        el: "#map",
-                        lat: 45.494447,
-                        lng: -73.5697587,
-                        scrollwheel: false,
-                        zoom: 14,
-                        zoomControl: true,
-                        panControl: false,
-                        streetViewControl: false,
-                        mapTypeControl: false,
-                        overviewMapControl: false,
-                        clickable: false
-                    });
-
-                    var image = "";
-                    map.addMarker({
-                        lat: 45.494447,
-                        lng: -73.5697587,
-                        icon: "img/marker.png",
-                        animation: google.maps.Animation.DROP,
-                        verticalAlign: "bottom",
-                        horizontalAlign: "center",
-                        backgroundColor: "#d3cfcf"
-                    });
-
-                    var styles = [
-                        {
-                            "featureType": "road",
-                            "stylers": [
-                                {"color": "#ffffff"}
-                            ]
-                        }, {
-                            "featureType": "water",
-                            "stylers": [
-                                {"color": "#f2f2f2"}
-                            ]
-                        }, {
-                            "featureType": "landscape",
-                            "stylers": [
-                                {"color": "#f2f2f2"}
-                            ]
-                        }, {
-                            "elementType": "labels.text.fill",
-                            "stylers": [
-                                {"color": "#2d2d2d"}
-                            ]
-                        }, {
-                            "featureType": "poi",
-                            "stylers": [
-                                {"color": "#f2f2f2"}
-                            ]
-                        }, {
-                            "elementType": "labels.text",
-                            "stylers": [
-                                {"saturation": 1},
-                                {"weight": 0.1},
-                                {"color": "#b1b1b1"}
-                            ]
-                        }
-
-                    ];
-
-                    map.addStyle({
-                        styledMapName: "Styled Map",
-                        styles: styles,
-                        mapTypeId: "map_style"
-                    });
-
-                    map.setStyle("map_style");
-                }
-            });
-        </script>
     </body>
 </html>

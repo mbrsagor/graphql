@@ -72,3 +72,9 @@ class AddingBrand_Form(forms.ModelForm):
         widgets = {
             'name' : TextInput(attrs={'class': 'form-control'})
         }
+
+
+
+# Product Comment/review
+class ProductComment_Form():
+    pass

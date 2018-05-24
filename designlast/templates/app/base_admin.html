@@ -43,6 +43,7 @@
                         <i class="caret"></i>
                     </a>
                     <ul class="dropdown-menu">
+                      <li><a target="_blank" href="{% url 'homepage' %}">Visit-Site</a></li>
                         <li><a href="{% url 'logout_views' %}">Logout</a></li>
                     </ul>
                 </li>
@@ -60,7 +61,6 @@
                             <ul class="list-unstyled" style="display: none;">
                                 <li><a href="{% url 'Products_View' %}"> Products </a></li>
                                 <li><a href="{% url 'add_prodct_views' %}"> Add Product </a></li>
-                                <li><a href="#"> Edit Product </a></li>
                                 <li><a href="{% url 'listOf_product_viwes' %}"> Delete Product </a></li>
                             </ul>
                         </li>
