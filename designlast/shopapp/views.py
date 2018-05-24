@@ -339,7 +339,7 @@ def adding_brand_views(request):
 
 
 
-# Delete Function
+# Delete Category
 def deleteCateogry_Views(request, id):
     if request.user.is_authenticated:
         delete_obj = get_object_or_404(Category, id = id)
