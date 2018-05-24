@@ -1,7 +1,7 @@
 {% extends 'app/base.html' %}
 {% load static %}
 
-{% block title %} Category {% endblock %}
+{% block title %} {{ title_category.name }} {% endblock %}
 
 {% block content %}
 
@@ -11,7 +11,7 @@
                     <div class="col-sm-12">
                         <ul>
                             <li><a href="{% url 'homepage' %}">Home</a></li>
-                            <li class="active">Product Category Page</li>
+                            <li class="active">{{ title_category.name }} Category</li>
                         </ul><!-- end breadcrumb -->
                     </div><!-- end col -->
                 </div><!-- end row -->
@@ -24,9 +24,16 @@
                 <div class="row">
                     <!-- start sidebar -->
                     <div class="col-sm-3">
+                    <div class="widget">
+                        <h6 class="subtitle">Our Facebook Page</h6>
+                        <div class="fb-page"
+                        data-href="https://www.facebook.com/imdb" 
+                        data-width="340"
+                        data-hide-cover="false"
+                        data-show-facepile="true"></div>
+                        </div><!-- end widget -->
                         <div class="widget">
                             <h6 class="subtitle">Categories</h6>
-
                             <ul class="list list-unstyled">
                               {% if cat_widget_item %}
                               {% for cat_widget in cat_widget_item %}
@@ -41,24 +48,6 @@
                                 {% endfor %}
                                 {% endif %}
                             </ul>
-                        </div><!-- end widget -->
-                        <div class="widget">
-                            <h6 class="subtitle">Prices</h6>
-
-                            <form method="post" class="price-range" data-start-min="250" data-start-max="650" data-min="0" data-max="1000" data-step="1">
-                                <div class="ui-range-values">
-                                    <div class="ui-range-value-min">
-                                        $<span></span>
-                                        <input type="hidden">
-                                    </div> -
-                                    <div class="ui-range-value-max">
-                                        $<span></span>
-                                        <input type="hidden">
-                                    </div>
-                                </div>
-                                <div class="ui-range-slider"></div>
-                                <button type="submit" class="btn btn-default btn-block btn-md">Filter</button>
-                            </form>
                         </div><!-- end widget -->
                         <div class="widget">
 
@@ -79,38 +68,12 @@
                             {% endif %}
                             </ul>
                         </div><!-- end widget -->
-                        <div class="widget">
-                            <h6 class="subtitle">Colors</h6>
-                            <ul class="list list-unstyled">
-                              {% if color_name %}
-                              {% for color in color_name %}
-                                <li>
-                                    <div class="checkbox-input">
-                                        <input id="red-color" class="styled" type="checkbox" checked>
-                                        <label for="red-color">
-                                            {{color.name}}
-                                        </label>
-                                    </div>
-                                </li>
-                                {% endfor %}
-                                {% endif %}
-                            </ul>
-                        </div><!-- end widget -->
-
-                        <div class="widget">
-                            <h6 class="subtitle">New Collection</h6>
-                            <figure>
-                                <a href="javascript:void(0);">
-                                    <img src="{% static 'img/products/men_06.jpg' %}" alt="collection">
-                                </a>
-                            </figure>
-                        </div><!-- end widget -->
                     </div><!-- end col -->
                     <!-- end sidebar -->
                     <div class="col-sm-9">
                         <div class="row">
                             <div class="col-sm-12 text-left">
-                                <h2 class="title">Shop with Category</h2>
+                                <h2 class="title">Shop with {{title_category.name}} Category</h2>
                             </div><!-- end col -->
                         </div><!-- end row -->
 

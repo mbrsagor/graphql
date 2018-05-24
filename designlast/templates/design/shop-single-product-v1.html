@@ -38,59 +38,19 @@
 
                         <hr class="spacer-5"><hr class="spacer-10 no-border">
 
+                        <!-- Facebook comment  -->
+                        <div class="fb-comments" data-href="" data-numposts="5"></div>
+
+                        <!-- Your share button code -->
+                        <div class="fb-share-button" 
+                        data-href="https://www.facebook.com/ClippingPS/" 
+                        data-layout="button_count">
+                        </div>
+
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="review_box">
-                                    <table width="100%" border="0">
-                                        <form method="POST">
-                                            {% csrf_token %} 
-                                            <div class="col-md-9 col-md-offset-0">
-                                                <tr><td width="77%">
-                                                <div class="">
-                                                <form class="form-horizontal" method="POST">
-                                                <fieldset>
-                                            
-                                                    <!-- Name input-->
-                                                    <div class="form-group">
-                                                    <label class="col-md-3 control-label" for="name">Full Name</label>
-                                                    <div class="col-md-9">
-                                                        <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
-                                                    </div>
-                                                    </div>
-                                            
-                                                    <!-- Email input-->
-                                                    <div class="form-group">
-                                                    <label class="col-md-3 control-label" for="email">Your E-mail</label>
-                                                    <div class="col-md-9">
-                                                        <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
-                                                    </div>
-                                                    </div>
-                                            
-                                                    <!-- Message body -->
-                                                    <div class="form-group">
-                                                    <label class="col-md-3 control-label" for="message">Your message</label>
-                                                    <div class="col-md-9">
-                                                        <textarea class="form-control" id="message" name="message" placeholder="Please enter your feedback here..." rows="5"></textarea>
-                                                    </div>
-                                                    </div>
-                                        
-                                        
-                                                    <!-- Rating -->
-                                                    <div class="form-group">
-                                                    <label class="col-md-3 control-label" for="message">Your rating</label>
-                                                    <div class="col-md-9">
-                                                        <input id="input-21e" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
-                                                    </div>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary btn-md">Submit</button>
-                                                    <button type="reset" class="btn btn-default btn-md">Clear</button>
-                                                </td>
-                                            </tr>
-                                        </form>
-                                    </table>
-                                </div>
                                 <p>
-                                  {{single_product.description | truncatechars:0 }}
+                                  <!-- {{single_product.description | truncatechars:25 }} -->
                                 </p>
                                 <hr class="spacer-15">
                                 <div class="row">
@@ -101,21 +61,12 @@
                                             <option value="green">Green</option>
                                             <option value="blue">Blue</option>
                                         </select>
+                                        
                                     </div><!-- end col -->
+                                    <div class="col-md-6">
+                                        <a href="#" type="button" class="btn btn-default btn-md round"><i class="fa fa-shopping-basket mr-5"></i>Direct Order</a>
+                                    </div>
                                 </div><!-- end row -->
-                                <hr class="spacer-15">
-
-                                <ul class="list list-inline">
-                                    <li><a href="#" type="button" class="btn btn-default btn-md round"><i class="fa fa-shopping-basket mr-5"></i>Direct Order</a></li>
-                                    <li>Visit Our Social Media: </li>
-                                    <li>
-                                        <ul class="social-icons style1">
-                                            <li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                                            <li class="twitter"><a href="https://www.twitter.com/"><i class="fa fa-twitter"></i></a></li>
-                                            <li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
                             </div><!-- end col -->
                         </div><!-- end row -->
                     </div><!-- end col -->

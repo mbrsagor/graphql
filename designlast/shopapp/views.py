@@ -60,8 +60,8 @@ class Category_View(View):
 
         category_product = Product.objects.filter(category__name = name)
         category_by_item = Category.objects.all()
+        title_category = get_object_or_404(Category, name = name)
         brand_name = Brand.objects.all()
-        color_name = Color.objects.all()
 
         search_query = request.GET.get('search_q')
         if search_query:
@@ -71,7 +71,7 @@ class Category_View(View):
             'cat' : category_product,
             'cat_widget_item' : category_by_item,
             'brand_name' : brand_name,
-            'color_name' : color_name,
+            'title_category' : title_category
         }
         return render(request, 'design/shop-sidebar-left.html', context)
 
