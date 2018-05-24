@@ -25,6 +25,7 @@ urlpatterns = [
     path('add-color/', add_Color_Views, name = 'add_Color_Views'),
     path('add-category/', category_views, name = 'category_views'),
     path('add-brand/', adding_brand_views, name = 'adding_brand_views'),
+    path('delete-category/<int:id>/', deleteCateogry_Views, name = 'delete_category'),
 
 ]
 

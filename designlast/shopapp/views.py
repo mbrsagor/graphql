@@ -53,7 +53,7 @@ class Single_page_views(View):
 
 
 
-# Category
+# Category Product
 class Category_View(View):
 
     def get(self, request, name):
@@ -333,5 +333,17 @@ def adding_brand_views(request):
         }
         template_name = 'admin/brand.html'
         return render(request, template_name, context)
+    else:
+        return redirect(login_views)
+
+
+
+
+# Delete Function
+def deleteCateogry_Views(request, id):
+    if request.user.is_authenticated:
+        delete_obj = get_object_or_404(Category, id = id)
+        delete_obj.delete()
+        return redirect(category_views)
     else:
         return redirect(login_views)

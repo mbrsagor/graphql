@@ -32,6 +32,8 @@
                       <tr>
                         <th>Category Name</th>
                         <th>Create At</th>
+                        <th>Edit Cateogry</th>
+                        <th>Delete Cateogry</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -40,6 +42,8 @@
                       <tr>
                         <th>{{cat.name}}</th>
                         <th>{{cat.create_at}}</th>
+                        <th><a href="">Edit Item</a></th>
+                        <th><a href="{% url 'delete_category' cat.id %}">Delete Item</a></th>
                       </tr>
                       {% endfor %}
                       {% endif %}
