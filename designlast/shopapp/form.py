@@ -49,6 +49,9 @@ class Slider_Form(forms.ModelForm):
     class Meta:
         model = Slider
         fields = ('__all__')
+        widgets = {
+            'title' : TextInput(attrs={'class': 'form-control'})
+        }
 
 
 

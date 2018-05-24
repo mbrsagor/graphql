@@ -3,6 +3,7 @@ from django.db import models
 # Slider
 class Slider(models.Model):
     image = models.ImageField(upload_to = 'slider')
+    title = models.CharField(max_length = 30, blank = True, null = True)
     create_at = models.DateTimeField(auto_now = True, auto_now_add = False)
 
     

@@ -208,6 +208,7 @@ def add_prodct_views(request):
 def slider_views(request):
 
     if request.user.is_authenticated:
+        slider_obj = Slider.objects.all().order_by('-id')
         form = Slider_Form()
         if request.method == 'POST':
             form = Slider_Form(request.POST, request.FILES)
@@ -216,7 +217,8 @@ def slider_views(request):
                 instance.save()
                 return redirect(slider_views)
         context = {
-            'form' : form
+            'form' : form,
+            'slider_obj' : slider_obj
         }
         template_name = 'admin/slider.html'
         return render(request, template_name, context)
@@ -280,18 +282,6 @@ def listOf_product_viwes(request):
 
 
 
-
-# Delete Products
-def delete_product_viwes(request, id):
-    if request.user.is_authenticated:
-        delete_obj = get_object_or_404(Product, id = id)
-        delete_obj.delete()
-        return redirect(listOf_product_viwes)
-    return redirect(login_views)
-
-
-
-
 # Add New Color
 def add_Color_Views(request):
 
@@ -338,6 +328,16 @@ def adding_brand_views(request):
 
 
 
+# Delete Products
+def delete_product_viwes(request, id):
+    if request.user.is_authenticated:
+        delete_obj = get_object_or_404(Product, id = id)
+        delete_obj.delete()
+        return redirect(listOf_product_viwes)
+    return redirect(login_views)
+
+
+
 
 # Delete Category
 def deleteCateogry_Views(request, id):
@@ -345,5 +345,16 @@ def deleteCateogry_Views(request, id):
         delete_obj = get_object_or_404(Category, id = id)
         delete_obj.delete()
         return redirect(category_views)
+    else:
+        return redirect(login_views)
+
+
+
+# Delete Slider
+def deleteSlider_views(request, id):
+    if request.user.is_authenticated:
+        delete_slider_obj = get_object_or_404(Slider, id = id)
+        delete_slider_obj.delete()
+        return redirect(slider_views)
     else:
         return redirect(login_views)
