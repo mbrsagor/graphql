@@ -27,6 +27,8 @@ urlpatterns = [
     path('add-brand/', adding_brand_views, name = 'adding_brand_views'),
     path('delete-category/<int:id>/', deleteCateogry_Views, name = 'delete_category'),
     path('delete-slider/<int:id>/', deleteSlider_views, name = 'deleteSlider_views'),
+    path('delete-color/<int:id>/', deleteColor_views, name = 'deleteColor_views'),
+    path('delete-brand/<int:id>/', deleteBrand_views, name = 'deleteBrand_views'),
     path('update-category/<name>/', update_caategroy, name= 'update_caategroy'),
 
 

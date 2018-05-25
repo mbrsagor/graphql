@@ -35,6 +35,7 @@
                       <tr>
                         <th>Color Name</th>
                         <th>Create At</th>
+                        <th>Delete Color</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -43,6 +44,7 @@
                       <tr>
                         <th>{{color.name}}</th>
                         <th>{{color.create_at}}</th>
+                        <th><a href="{% url 'deleteColor_views' color.id %}">Delete</a></th>
                       </tr>
                       {% endfor %}
                       {% endif %}

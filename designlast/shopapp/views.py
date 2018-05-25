@@ -9,6 +9,7 @@ from .form import Contact_Forms, AddNewProduct, Slider_Form, CategoryForm, Addin
 
 # Create your views here.
 def homepage(request):
+
     product_search = Product.objects.all()
     slider_obj = Slider.objects.all()
     latest_product = Product.objects.filter(category__id = 2).order_by('-id')[:6]
@@ -95,6 +96,7 @@ class Shop_Project_Views(View):
 
 # Contact views
 def Contact_Us_Views(request):
+
     if request.method == 'GET':
         form = Contact_Forms()
     else:
@@ -120,8 +122,8 @@ def Contact_Us_Views(request):
 
 # About Us
 class About_us_Views(View):
-    def get(self, request):
 
+    def get(self, request):
         template_name = 'design/about.html'
         return render(request,template_name)
 
@@ -129,6 +131,7 @@ class About_us_Views(View):
 
 # User login views
 def login_views(request):
+
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -151,8 +154,8 @@ def logout_views(request):
 
 
 # Dashboard views
-
 def dashboard_views(request):
+
     if request.user.is_authenticated:
         count_product = Product.objects.count()
         count_category = Category.objects.count()
@@ -184,6 +187,7 @@ class Products_View(View):
 
 # Add New Product
 def add_prodct_views(request):
+
     if request.user.is_authenticated:
         form = AddNewProduct()
         if request.method == 'POST':
@@ -250,6 +254,7 @@ def category_views(request):
 
 # Edit Product
 def edit_product_views(request, id):
+
     if request.user.is_authenticated:
         edit_obj = get_object_or_404(Product, id = id)
         form = AddNewProduct(request.POST or None, request.FILES, instance = edit_obj)
@@ -331,6 +336,7 @@ def adding_brand_views(request):
 
 # Delete Products
 def delete_product_viwes(request, id):
+
     if request.user.is_authenticated:
         delete_obj = get_object_or_404(Product, id = id)
         delete_obj.delete()
@@ -342,6 +348,7 @@ def delete_product_viwes(request, id):
 
 # Delete Category
 def deleteCateogry_Views(request, id):
+
     if request.user.is_authenticated:
         delete_obj = get_object_or_404(Category, id = id)
         delete_obj.delete()
@@ -353,6 +360,7 @@ def deleteCateogry_Views(request, id):
 
 # Delete Slider
 def deleteSlider_views(request, id):
+
     if request.user.is_authenticated:
         delete_slider_obj = get_object_or_404(Slider, id = id)
         delete_slider_obj.delete()
@@ -361,8 +369,35 @@ def deleteSlider_views(request, id):
         return redirect(login_views)
 
 
+
+# Delete Color
+def deleteColor_views(request, id):
+
+    if request.user.is_authenticated:
+        delete_color_obj = get_object_or_404(Color, id = id)
+        delete_color_obj.delete()
+        return redirect(dashboard_views)
+    else:
+        return redirect(login_views)
+
+
+
+
+# Delete Brand
+def deleteBrand_views(request, id):
+    
+    if request.user.is_authenticated:
+        delete_brand = get_object_or_404(Brand, id = id)
+        delete_brand.delete()
+        return redirect(dashboard_views)
+    else:
+        return redirect(login_views)
+
+
+
 # Update Cateogry
 def update_caategroy(request, name):
+
     if request.user.is_authenticated:
         update_cat_obj = get_object_or_404(Category, name=name)
         form = CategoryForm(request.POST or None)

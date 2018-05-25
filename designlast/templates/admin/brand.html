@@ -35,6 +35,7 @@
                       <tr>
                         <th>Brand Name</th>
                         <th>Create At</th>
+                        <th>Delete Brand</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -43,6 +44,7 @@
                       <tr>
                         <th>{{brand.name}}</th>
                         <th>{{brand.create_at}}</th>
+                        <th><a href="{% url 'deleteBrand_views' brand.id %}">Delete</a></th>
                       </tr>
                       {% endfor %}
                       {% endif %}
