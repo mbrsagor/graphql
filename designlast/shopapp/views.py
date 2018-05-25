@@ -5,7 +5,6 @@ from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import *
 from .form import Contact_Forms, AddNewProduct, Slider_Form, CategoryForm, AddingColor_Form, AddingBrand_Form
-from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
