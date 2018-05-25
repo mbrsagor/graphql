@@ -358,6 +358,7 @@ def deleteCateogry_Views(request, id):
 
 
 
+
 # Delete Slider
 def deleteSlider_views(request, id):
 
