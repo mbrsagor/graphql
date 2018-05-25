@@ -42,7 +42,7 @@
                       <tr>
                         <th>{{cat.name}}</th>
                         <th>{{cat.create_at}}</th>
-                        <th><a href="">Edit Item</a></th>
+                        <th><a href="{% url 'update_caategroy' cat.name %}">Edit Item</a></th>
                         <th><a href="{% url 'delete_category' cat.id %}">Delete Item</a></th>
                       </tr>
                       {% endfor %}

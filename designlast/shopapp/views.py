@@ -251,18 +251,20 @@ def category_views(request):
 
 # Edit Product
 def edit_product_views(request, id):
-
-    instance = get_object_or_404(Product, id = id)
-    form = AddNewProduct(request.POST or None, request.FILES, instance = instance)
-    if form.is_valid():
-        instance = form.save(commit = False)
-        instance.save()
-        return redirect(edit_product_views)
-    context = {
-        'form' : form
-    }
-    template_name = 'admin/edit-product.html'
-    return render(request, template_name, context)
+    if request.user.is_authenticated:
+        instance = get_object_or_404(Product, id = id)
+        form = AddNewProduct(request.POST or None, request.FILES, instance = instance)
+        if form.is_valid():
+            instance = form.save(commit = False)
+            instance.save()
+            return redirect(edit_product_views)
+        context = {
+            'form' : form
+        }
+        template_name = 'admin/edit-product.html'
+        return render(request, template_name, context)
+    else:
+        return redirect(login_views)
 
 
 
@@ -358,3 +360,26 @@ def deleteSlider_views(request, id):
         return redirect(slider_views)
     else:
         return redirect(login_views)
+
+
+# Update Cateogry
+def update_caategroy(request, name):
+    if request.user.is_authenticated:
+        update_cat_obj = get_object_or_404(Category, name=name)
+        form = CategoryForm(request.POST or None)
+        if form.is_valid():
+            instance = form.save(commit = False)
+            instance.save()
+            return redirect(add_prodct_views)
+        else:
+          form = CategoryForm()  
+    
+        context = {
+            'form' : form
+        }
+        template_name = 'admin/category.html'
+        return render(request, template_name, context)
+
+    else:
+        return redirect(login_views)
+        
