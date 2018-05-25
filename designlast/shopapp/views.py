@@ -251,12 +251,12 @@ def category_views(request):
 # Edit Product
 def edit_product_views(request, id):
     if request.user.is_authenticated:
-        instance = get_object_or_404(Product, id = id)
-        form = AddNewProduct(request.POST or None, request.FILES, instance = instance)
+        edit_obj = get_object_or_404(Product, id = id)
+        form = AddNewProduct(request.POST or None, request.FILES, instance = edit_obj)
         if form.is_valid():
             instance = form.save(commit = False)
             instance.save()
-            return redirect(edit_product_views)
+            return redirect(add_prodct_views)
         context = {
             'form' : form
         }
