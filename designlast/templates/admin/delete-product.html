@@ -9,6 +9,15 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
+                    <!-- End message framwork -->
+                {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                    <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <!-- End message framwork -->
                     <table class="table table-border custom-table m-b-0">
                         <thead>
                             <tr>

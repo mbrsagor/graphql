@@ -27,6 +27,18 @@
                         <div class="account-logo">
                             <a href="{% url 'login_views' %}"><img src="{% static 'assets/img/logo.png' %}" alt="Preadmin"></a>
                         </div>
+
+
+                        <!-- End message framwork -->
+                        {% if messages %}
+                        <div style="margin-bottom: 10px;color: #f00;" class="messages text-center">
+                            {% for message in messages %}
+                            <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        <!-- End message framwork -->
+
                         <form method="POST">
                           {% csrf_token %}
                             <div class="form-group form-focus">

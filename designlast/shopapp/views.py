@@ -4,8 +4,14 @@ from django.views import View
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import *
+
 from .form import Contact_Forms, AddNewProduct, Slider_Form, CategoryForm, AddingColor_Form, AddingBrand_Form
+# paginator
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+# message framework
+from django.contrib import messages
+
+
 
 
 # Create your views here.
@@ -71,9 +77,10 @@ class Category_View(View):
         contacts = paginator.get_page(page)
 
         # Search Query
+        search_product_q = Product.objects.all()
         search_query = request.GET.get('search_q')
         if search_query:
-            product_obj = Product.filter(name__icontains = search_query)
+            category_by_item = category_by_item.filter(name__icontains = search_query)
 
         context = {
             'cat' : contacts,
@@ -90,9 +97,12 @@ class Shop_Project_Views(View):
 
     def get(self, request):
         all_products = Product.objects.all()
+
+        # Search Query
         search_query = request.GET.get('search_q')
         if search_query:
             all_products = all_products.filter(name__icontains = search_query)
+
         context = {
             'all_products' : all_products
         }
@@ -146,7 +156,10 @@ def login_views(request):
         auth = authenticate(username = username, password = password)
         if auth is not None:
             login(request, auth)
+            messages.add_message(request, messages.INFO, 'Login successfully')
             return redirect(dashboard_views)
+        else:
+            messages.add_message(request, messages.INFO, 'Invalid username & password')
     template_name = 'admin/login.html'
     return render(request,template_name)
 
@@ -203,6 +216,7 @@ def add_prodct_views(request):
             if form.is_valid():
                 instance = form.save(commit = False)
                 instance.save()
+                messages.add_message(request, messages.INFO, 'Product added successfully')
                 return redirect(add_prodct_views)
         context = {
             'form' : form
@@ -226,6 +240,7 @@ def slider_views(request):
             if form.is_valid():
                 instance = form.save(commit = False)
                 instance.save()
+                messages.add_message(request, messages.INFO, 'Slider added successfully')
                 return redirect(slider_views)
         context = {
             'form' : form,
@@ -249,6 +264,7 @@ def category_views(request):
             if form.is_valid():
                 instance = form.save(commit = False)
                 instance.save()
+                messages.add_message(request, messages.INFO, 'Category added successfully')
                 return redirect(category_views)
         context = {
             'form' : form,
@@ -256,7 +272,8 @@ def category_views(request):
         }
         template_name = 'admin/category.html'
         return render(request, template_name, context)
-    return redirect(login_views)
+    else:
+        return redirect(login_views)
 
 
 
@@ -269,6 +286,7 @@ def edit_product_views(request, id):
         if form.is_valid():
             instance = form.save(commit = False)
             instance.save()
+            messages.add_message(request, messages.INFO, 'Product update successfully')
             return redirect(add_prodct_views)
         context = {
             'form' : form
@@ -307,6 +325,7 @@ def add_Color_Views(request):
             if form.is_valid():
                 instance = form.save(commit = False)
                 instance.save()
+                messages.add_message(request, messages.INFO, 'Color added successfully')
                 return redirect(add_Color_Views)
         context = {
             'form' : form,
@@ -330,6 +349,7 @@ def adding_brand_views(request):
             if form.is_valid():
                 instance = form.save(commit = False)
                 instance.save()
+                messages.add_message(request, messages.INFO, 'Brand added successfully')
                 return redirect(adding_brand_views)
         context = {
             'form' : form,
@@ -348,6 +368,7 @@ def delete_product_viwes(request, id):
     if request.user.is_authenticated:
         delete_obj = get_object_or_404(Product, id = id)
         delete_obj.delete()
+        messages.add_message(request, messages.INFO, 'Product Delete successfully')
         return redirect(listOf_product_viwes)
     return redirect(login_views)
 
@@ -360,6 +381,7 @@ def deleteCateogry_Views(request, id):
     if request.user.is_authenticated:
         delete_obj = get_object_or_404(Category, id = id)
         delete_obj.delete()
+        messages.add_message(request, messages.INFO, 'Category Delete successfully')
         return redirect(category_views)
     else:
         return redirect(login_views)
@@ -373,6 +395,7 @@ def deleteSlider_views(request, id):
     if request.user.is_authenticated:
         delete_slider_obj = get_object_or_404(Slider, id = id)
         delete_slider_obj.delete()
+        messages.add_message(request, messages.INFO, 'Slider Delete successfully')
         return redirect(slider_views)
     else:
         return redirect(login_views)
@@ -385,6 +408,7 @@ def deleteColor_views(request, id):
     if request.user.is_authenticated:
         delete_color_obj = get_object_or_404(Color, id = id)
         delete_color_obj.delete()
+        messages.add_message(request, messages.INFO, 'Color Delete successfully')
         return redirect(dashboard_views)
     else:
         return redirect(login_views)
@@ -398,6 +422,7 @@ def deleteBrand_views(request, id):
     if request.user.is_authenticated:
         delete_brand = get_object_or_404(Brand, id = id)
         delete_brand.delete()
+        messages.add_message(request, messages.INFO, 'Brand Delete successfully')
         return redirect(dashboard_views)
     else:
         return redirect(login_views)
@@ -413,6 +438,7 @@ def update_caategroy(request, name):
         if form.is_valid():
             instance = form.save(commit = False)
             instance.save()
+            messages.add_message(request, messages.INFO, 'Cateogry update successfully')
             return redirect(add_prodct_views)
         else:
           form = CategoryForm()  
