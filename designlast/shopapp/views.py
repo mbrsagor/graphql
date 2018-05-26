@@ -5,6 +5,7 @@ from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import *
 from .form import Contact_Forms, AddNewProduct, Slider_Form, CategoryForm, AddingColor_Form, AddingBrand_Form
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 
 # Create your views here.
@@ -63,12 +64,19 @@ class Category_View(View):
         title_category = get_object_or_404(Category, name = name)
         brand_name = Brand.objects.all()
 
+        # product paginator
+        product_pagination = Product.objects.all()
+        paginator = Paginator(product_pagination, 6)
+        page = request.GET.get('page')
+        contacts = paginator.get_page(page)
+
+        # Search Query
         search_query = request.GET.get('search_q')
         if search_query:
             product_obj = Product.filter(name__icontains = search_query)
 
         context = {
-            'cat' : category_product,
+            'cat' : contacts,
             'cat_widget_item' : category_by_item,
             'brand_name' : brand_name,
             'title_category' : title_category

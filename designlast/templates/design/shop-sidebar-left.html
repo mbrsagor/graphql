@@ -111,15 +111,23 @@
                         <div class="row">
                             <div class="col-sm-12 text-center">
                                 <nav>
-                                    <ul class="pagination">
-                                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li class="active"><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-                                    </ul>
+                                    <div class="pagination">
+                                        <span class="step-links">
+                                            {% if cat.has_previous %}
+                                                <a href="?page=1">&laquo; first</a>
+                                                <a href="?page={{ cat.previous_page_number }}">previous</a>
+                                            {% endif %}
+                                    
+                                            <span class="current">
+                                                Page {{ cat.number }} of {{ cat.paginator.num_pages }}.
+                                            </span>
+                                    
+                                            {% if cat.has_next %}
+                                                <a href="?page={{ cat.next_page_number }}">next</a>
+                                                <a href="?page={{ cat.paginator.num_pages }}">last &raquo;</a>
+                                            {% endif %}
+                                        </span>
+                                    </div>
                                 </nav>
                             </div><!-- end col -->
                         </div><!-- end row -->
