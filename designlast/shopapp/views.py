@@ -158,7 +158,6 @@ def login_views(request):
         auth = authenticate(username = username, password = password)
         if auth is not None:
             login(request, auth)
-            messages.add_message(request, messages.INFO, 'Login successfully')
             return redirect(dashboard_views)
         else:
             messages.add_message(request, messages.INFO, 'Invalid username & password')

@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <!-- End message framwork -->
+                    <!-- start message framwork -->
                 {% if messages %}
                 <div class="messages">
                     {% for message in messages %}
@@ -50,6 +50,7 @@
                         </tbody>
                     </table>
                 </div>
+                <!-- Pagination -->
                 <div class="pagination text-center">
                     <span class="step-links">
                         {% if product_obj.has_previous %}
