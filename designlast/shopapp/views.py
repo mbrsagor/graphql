@@ -52,9 +52,11 @@ class Single_page_views(View):
 
         single_page = get_object_or_404(Product, id = id)
         related_porduct = Product.objects.filter(category = single_page.category).exclude(id = id)[:4]
+        color = Color.objects.all()
         context = {
             'single_product' : single_page,
-            'related_porduct' : related_porduct
+            'related_porduct' : related_porduct,
+            'color' : color,
         }
         return render(request, 'design/shop-single-product-v1.html', context)
 
@@ -304,8 +306,14 @@ def listOf_product_viwes(request):
 
     if request.user.is_authenticated:
         product_obj = Product.objects.all().order_by('-publish_on')
+
+        # product paginator
+        paginator = Paginator(product_obj, 12)
+        page = request.GET.get('page')
+        contacts = paginator.get_page(page)
+
         context = {
-            'product_obj' : product_obj
+            'product_obj' : contacts
         }
         template_name = 'admin/delete-product.html'
         return render(request, template_name, context)

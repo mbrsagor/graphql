@@ -56,10 +56,11 @@
                                 <div class="row">
                                     <div class="col-md-4 col-sm-6 col-xs-12">
                                         <select class="form-control" name="select">
-                                            <option value="" selected>Color</option>
-                                            <option value="red">Red</option>
-                                            <option value="green">Green</option>
-                                            <option value="blue">Blue</option>
+                                            {% if color %}
+                                            {% for color in color %}
+                                            <option>{{color}}</option>
+                                            {% endfor %}
+                                            {% endif %}
                                         </select>
                                         
                                     </div><!-- end col -->
