@@ -13,7 +13,6 @@ from django.contrib import messages
 
 
 
-
 # Create your views here.
 def homepage(request):
 
@@ -425,7 +424,7 @@ def deleteColor_views(request, id):
 
 # Delete Brand
 def deleteBrand_views(request, id):
-    
+
     if request.user.is_authenticated:
         delete_brand = get_object_or_404(Brand, id = id)
         delete_brand.delete()
@@ -448,8 +447,8 @@ def update_caategroy(request, name):
             messages.add_message(request, messages.INFO, 'Cateogry update successfully')
             return redirect(add_prodct_views)
         else:
-          form = CategoryForm()  
-    
+          form = CategoryForm()
+
         context = {
             'form' : form
         }
@@ -458,4 +457,3 @@ def update_caategroy(request, name):
 
     else:
         return redirect(login_views)
-        

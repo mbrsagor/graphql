@@ -31,7 +31,6 @@ urlpatterns = [
     path('delete-brand/<int:id>/', deleteBrand_views, name = 'deleteBrand_views'),
     path('update-category/<name>/', update_caategroy, name= 'update_caategroy'),
 
-
 ]
 
 if settings.DEBUG:

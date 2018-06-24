@@ -43,7 +43,6 @@ class CategoryForm(forms.ModelForm):
         }
 
 
-
 # Edit Product Item
 class Slider_Form(forms.ModelForm):
     class Meta:
@@ -52,7 +51,6 @@ class Slider_Form(forms.ModelForm):
         widgets = {
             'title' : TextInput(attrs={'class': 'form-control'})
         }
-
 
 
 # Adding Color
@@ -75,8 +73,6 @@ class AddingBrand_Form(forms.ModelForm):
         widgets = {
             'name' : TextInput(attrs={'class': 'form-control'})
         }
-
-
 
 # Product Comment/review
 class ProductComment_Form():

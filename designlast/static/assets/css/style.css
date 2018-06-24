@@ -370,7 +370,7 @@ table.table td h2 span {color: #9e9e9e;display: block;font-size: 12px;margin-top
 */
 
 .account-title {font-size: 32px;font-weight: normal;margin: 40px 0;text-align: center;}
-.account-box {margin: 0 auto;width: 400px; border:1px solid #e7e7e7;background-color:#fff;}
+.account-box {margin: 250px auto;width: 400px; border:1px solid #e7e7e7;background-color:#fff;}
 .account-wrapper {padding: 30px;}
 .account-logo {margin-bottom: 20px;text-align: center;}
 .account-box .form-group {margin-bottom: 25px;}
@@ -392,11 +392,11 @@ table.table td h2 span {color: #9e9e9e;display: block;font-size: 12px;margin-top
 .panel-table.panel-table-top .panel-body {height: 175px;overflow-y: auto; -webkit-overflow-scrolling: touch;}
 .panel-title > a.btn {color:#fff;}
 .custom-table tr {background-color: #fff;}
-.table.custom-table > tbody > tr > td, 
-.table.custom-table > tbody > tr > th, 
-.table.custom-table > tfoot > tr > td, 
-.table.custom-table > tfoot > tr > th, 
-.table.custom-table > thead > tr > td, 
+.table.custom-table > tbody > tr > td,
+.table.custom-table > tbody > tr > th,
+.table.custom-table > tfoot > tr > td,
+.table.custom-table > tfoot > tr > th,
+.table.custom-table > thead > tr > td,
 .table.custom-table > thead > tr > th {padding: 10px 8px;vertical-align: middle;}
 .dash-widget-icon {border-radius: 100%;color: #777;display: inline-block;float: left;font-size: 30px;height: 66px;line-height: 66px;margin-right: 10px;text-align: center;width: 66px;}
 .dash-widget-info {text-align: right;}
@@ -511,7 +511,7 @@ table.table td h2 span {color: #9e9e9e;display: block;font-size: 12px;margin-top
 .last-seen {color: #a3afb7;display: block;font-size: 12px;}
 .custom-menu {margin-top: 6px;}
 .custom-menu.navbar-nav > li > a {color: #00bf6f;font-size: 26px;margin-left: 15px;padding: 0;}
-.custom-menu.navbar-nav > li > a:hover, .custom-menu.navbar-nav > li > a:focus {background-color:transparent;} 
+.custom-menu.navbar-nav > li > a:hover, .custom-menu.navbar-nav > li > a:focus {background-color:transparent;}
 .custom-menu .dropdown-menu {left: auto;right: 0;}
 .search-box {margin-top: 5px;}
 .search-box .input-group {background-color: #e6e6e6;border: 1px solid #ddd;border-radius: 50px;}
@@ -1278,7 +1278,7 @@ table.table-inbox tbody tr.checked {background-color: #ffffcc;}
 	padding: 0 20px 0 23px;
 	position: relative;
 	margin: 0 10px 10px 0;
-	text-decoration: none; 
+	text-decoration: none;
 	-moz-transition:color 0.2s;
 	-ms-transition:color 0.2s;
 	-o-transition:color 0.2s;

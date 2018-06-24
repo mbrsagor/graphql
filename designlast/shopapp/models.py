@@ -6,8 +6,6 @@ class Slider(models.Model):
     title = models.CharField(max_length = 30, blank = True, null = True)
     create_at = models.DateTimeField(auto_now = True, auto_now_add = False)
 
-    
-
 
 # Color
 class Color(models.Model):
@@ -17,8 +15,6 @@ class Color(models.Model):
     def __str__(self):
         return self.name
 
-
-
 # Brand
 class Brand(models.Model):
     name = models.CharField(max_length = 20, unique = True)
@@ -27,9 +23,6 @@ class Brand(models.Model):
     def __str__(self):
         return self.name
 
-
-
-
 # Category
 class Category(models.Model):
     name = models.CharField(max_length = 20, unique = True)
@@ -37,8 +30,6 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-
-
 
 # Product
 class Product(models.Model):

@@ -22,7 +22,7 @@ ALLOWED_HOSTS = []
 EMAIL_USE_TLS = True
 EMAIL_HOST ='smtp.gmail.com'
 EMAIL_HOST_USER = 'mbrsagor@gmail.com'
-EMAIL_HOST_PASSWORD = 'admin@2018'
+EMAIL_HOST_PASSWORD = '****'
 EMAIL_PORT = 587
 
 
