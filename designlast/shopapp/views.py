@@ -43,12 +43,10 @@ def homepage(request):
     return render(request, 'design/index.html', context)
 
 
-
 # Sinlge page views
 class Single_page_views(View):
 
     def get(self, request, id):
-
         single_page = get_object_or_404(Product, id = id)
         related_porduct = Product.objects.filter(category = single_page.category).exclude(id = id)[:4]
         color = Color.objects.all()
@@ -60,12 +58,10 @@ class Single_page_views(View):
         return render(request, 'design/shop-single-product-v1.html', context)
 
 
-
 # Category Product
 class Category_View(View):
 
     def get(self, request, name):
-
         category_product = Product.objects.filter(category__name = name)
         category_by_item = Category.objects.all()
         title_category = get_object_or_404(Category, name = name)
@@ -111,8 +107,6 @@ class Shop_Project_Views(View):
         return render(request, template_name, context)
 
 
-
-
 # Contact views
 def Contact_Us_Views(request):
 
@@ -147,7 +141,6 @@ class About_us_Views(View):
         return render(request,template_name)
 
 
-
 # User login views
 def login_views(request):
 
@@ -162,8 +155,6 @@ def login_views(request):
             messages.add_message(request, messages.INFO, 'Invalid username & password')
     template_name = 'admin/login.html'
     return render(request,template_name)
-
-
 
 
 # User lgout views
@@ -287,7 +278,7 @@ def edit_product_views(request, id):
             if form.is_valid():
                 form.save()
                 messages.add_message(request, messages.INFO, 'Product update successfully')
-                return redirect(add_prodct_views)
+                # return redirect(edit_product_views)
         else:
             form = AddNewProduct(instance = edit_obj)
         context = {
@@ -408,7 +399,6 @@ def deleteSlider_views(request, id):
         return redirect(login_views)
 
 
-
 # Delete Color
 def deleteColor_views(request, id):
 
@@ -419,8 +409,6 @@ def deleteColor_views(request, id):
         return redirect(dashboard_views)
     else:
         return redirect(login_views)
-
-
 
 
 # Delete Brand
@@ -441,20 +429,18 @@ def update_caategroy(request, name):
 
     if request.user.is_authenticated:
         update_cat_obj = get_object_or_404(Category, name=name)
-        form = CategoryForm(request.POST or None)
+        form = CategoryForm(request.POST, instance = update_cat_obj)
         if form.is_valid():
-            instance = form.save(commit = False)
-            instance.save()
+            form.save()
             messages.add_message(request, messages.INFO, 'Cateogry update successfully')
-            return redirect(add_prodct_views)
+            # return redirect(add_prodct_views)
         else:
-          form = CategoryForm()
-
+          form = CategoryForm(instance = update_cat_obj)
         context = {
-            'form' : form
+            'form' : form,
+            'update_cat_obj' : update_cat_obj
         }
         template_name = 'admin/category.html'
         return render(request, template_name, context)
-
     else:
         return redirect(login_views)
