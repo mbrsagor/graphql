@@ -282,20 +282,21 @@ def edit_product_views(request, id):
 
     if request.user.is_authenticated:
         edit_obj = get_object_or_404(Product, id = id)
-        form = AddNewProduct(request.POST or None, request.FILES, instance = edit_obj)
-        if form.is_valid():
-            instance = form.save(commit = False)
-            instance.save()
-            messages.add_message(request, messages.INFO, 'Product update successfully')
-            return redirect(add_prodct_views)
+        if request.method == 'POST':
+            form = AddNewProduct(request.POST, request.FILES, instance = edit_obj)
+            if form.is_valid():
+                form.save()
+                messages.add_message(request, messages.INFO, 'Product update successfully')
+                return redirect(add_prodct_views)
+        else:
+            form = AddNewProduct(instance = edit_obj)
         context = {
-            'form' : form
+            'form' : form,
         }
         template_name = 'admin/edit-product.html'
         return render(request, template_name, context)
     else:
         return redirect(login_views)
-
 
 
 
