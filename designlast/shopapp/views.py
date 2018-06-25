@@ -15,14 +15,14 @@ from django.contrib import messages
 # Create your views here.
 def homepage(request):
 
-    product_search      = Product.objects.all()
-    slider_obj          = Slider.objects.all()
-    latest_product      = Product.objects.filter(category__id = 2).order_by('-id')[:6]
-    best_seller         = Product.objects.filter(category__id = 3).order_by('-id')[:5]
-    featured            = Product.objects.filter(category__id = 4).order_by('-id')[:9]
+    product_search       = Product.objects.all()
+    slider_obj           = Slider.objects.all()
+    latest_product       = Product.objects.filter(category__id = 2).order_by('-id')[:6]
+    best_seller          = Product.objects.filter(category__id = 3).order_by('-id')[:5]
+    featured             = Product.objects.filter(category__id = 4).order_by('-id')[:9]
     best_seller_galllery = Product.objects.filter(category__id = 3).order_by('-id')[:9]
-    special = Product.objects.filter(category__id = 5).order_by('-id')[:9]
-    cat_menu = Category.objects.all()
+    special              = Product.objects.filter(category__id = 5).order_by('-id')[:9]
+    cat_menu             = Category.objects.all()
 
     context = {
         'slider_obj'            : slider_obj,

@@ -3,11 +3,10 @@ from django.forms import TextInput, Textarea, Select, RadioSelect, DateInput
 from .models import Product, Slider, Category, Color, Brand
 
 
-
 # Contact Form
 class Contact_Forms(forms.Form):
-    name = forms.CharField(required = True,  widget=forms.TextInput(attrs={'class': 'form-control input'}))
-    email = forms.EmailField(required = True,  widget=forms.TextInput(attrs={'class': 'form-control input'}))
+    name    = forms.CharField(required = True,  widget=forms.TextInput(attrs={'class': 'form-control input'}))
+    email   = forms.EmailField(required = True,  widget=forms.TextInput(attrs={'class': 'form-control input'}))
     message = forms.CharField(required = True,  widget=forms.Textarea(attrs={'class': 'form-control textarea'}))
 
 
@@ -17,18 +16,17 @@ class AddNewProduct(forms.ModelForm):
     class Meta:
         model = Product
         fields = ('__all__')
-
         widgets = {
-            'name' : TextInput(attrs={'class':'form-control'}),
-            'category' : Select(attrs={'class':'select'}),
-            'color' : Select(attrs={'class':'select'}),
-            'discount_price' : TextInput(attrs={'class':'form-control'}),
-            'discount_off_price' : TextInput(attrs={'class':'form-control'}),
-            'price' : TextInput(attrs={'class':'form-control'}),
-            'product_code' : TextInput(attrs={'class':'form-control'}),
-            'brand_name' : Select(attrs={'class':'form-control'}),
-            'order_now_link' : TextInput(attrs={'class':'form-control'}),
-            'description' : Textarea(attrs={'class':'form-control'}),
+            'name'              : TextInput(attrs={'class':'form-control'}),
+            'category'          : Select(attrs={'class':'select'}),
+            'color'             : Select(attrs={'class':'select'}),
+            'discount_price'    : TextInput(attrs={'class':'form-control'}),
+            'discount_off_price': TextInput(attrs={'class':'form-control'}),
+            'price'             : TextInput(attrs={'class':'form-control'}),
+            'product_code'      : TextInput(attrs={'class':'form-control'}),
+            'brand_name'        : Select(attrs={'class':'form-control'}),
+            'order_now_link'    : TextInput(attrs={'class':'form-control'}),
+            'description'       : Textarea(attrs={'class':'form-control'}),
         }
 
 
@@ -58,7 +56,6 @@ class AddingColor_Form(forms.ModelForm):
     class Meta:
         model = Color
         fields = ('__all__')
-
         widgets = {
             'name' : TextInput(attrs={'class': 'form-control'})
         }
@@ -69,11 +66,6 @@ class AddingBrand_Form(forms.ModelForm):
     class Meta:
         model = Brand
         fields = ('__all__')
-
         widgets = {
             'name' : TextInput(attrs={'class': 'form-control'})
         }
-
-# Product Comment/review
-class ProductComment_Form():
-    pass
