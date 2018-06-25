@@ -6,7 +6,7 @@ from .models import Product, Slider, Category, Color, Brand
 # Contact Form
 class Contact_Forms(forms.Form):
     name    = forms.CharField(required = True,  widget=forms.TextInput(attrs={'class': 'form-control input'}))
-    email   = forms.EmailField(required = True,  widget=forms.TextInput(attrs={'class': 'form-control input'}))
+    email   = forms.EmailField(required = True, widget=forms.TextInput(attrs={'class': 'form-control input'}))
     message = forms.CharField(required = True,  widget=forms.Textarea(attrs={'class': 'form-control textarea'}))
 
 
@@ -14,8 +14,8 @@ class Contact_Forms(forms.Form):
 # Add New Product
 class AddNewProduct(forms.ModelForm):
     class Meta:
-        model = Product
-        fields = ('__all__')
+        model   = Product
+        fields  = ('__all__')
         widgets = {
             'name'              : TextInput(attrs={'class':'form-control'}),
             'category'          : Select(attrs={'class':'select'}),
@@ -34,8 +34,8 @@ class AddNewProduct(forms.ModelForm):
 # Add New Category
 class CategoryForm(forms.ModelForm):
     class Meta:
-        model = Category
-        fields = ('__all__')
+        model   = Category
+        fields  = ('__all__')
         widgets = {
             'name' : TextInput(attrs={'class': 'form-control'})
         }
@@ -44,8 +44,8 @@ class CategoryForm(forms.ModelForm):
 # Edit Product Item
 class Slider_Form(forms.ModelForm):
     class Meta:
-        model = Slider
-        fields = ('__all__')
+        model   = Slider
+        fields  = ('__all__')
         widgets = {
             'title' : TextInput(attrs={'class': 'form-control'})
         }
@@ -54,8 +54,8 @@ class Slider_Form(forms.ModelForm):
 # Adding Color
 class AddingColor_Form(forms.ModelForm):
     class Meta:
-        model = Color
-        fields = ('__all__')
+        model   = Color
+        fields  = ('__all__')
         widgets = {
             'name' : TextInput(attrs={'class': 'form-control'})
         }
@@ -64,8 +64,8 @@ class AddingColor_Form(forms.ModelForm):
 # Adding Brand
 class AddingBrand_Form(forms.ModelForm):
     class Meta:
-        model = Brand
-        fields = ('__all__')
+        model   = Brand
+        fields  = ('__all__')
         widgets = {
             'name' : TextInput(attrs={'class': 'form-control'})
         }

@@ -38,11 +38,11 @@ def homepage(request):
 
 # Sinlge page views
 class Single_page_views(View):
-
     def get(self, request, id):
-        single_page = get_object_or_404(Product, id = id)
+        single_page     = get_object_or_404(Product, id = id)
         related_porduct = Product.objects.filter(category = single_page.category).exclude(id = id)[:4]
-        color = Color.objects.all()
+        color           = Color.objects.all()
+
         context = {
             'single_product'    : single_page,
             'related_porduct'   : related_porduct,
@@ -57,13 +57,13 @@ class Category_View(View):
         category_product    = Product.objects.filter(category__name = name)
         category_by_item    = Category.objects.all()
         title_category      = get_object_or_404(Category, name = name)
-        brand_name = Brand.objects.all()
+        brand_name          = Brand.objects.all()
 
         # product paginator
         product_pagination  = Product.objects.all()
         paginator           = Paginator(product_pagination, 6)
         page                = request.GET.get('page')
-        contacts = paginator.get_page(page)
+        contacts            = paginator.get_page(page)
 
         # Search Query
         search_product_q    = Product.objects.all()
@@ -85,7 +85,6 @@ class Category_View(View):
 class Shop_Project_Views(View):
     def get(self, request):
         all_products = Product.objects.all()
-
         # Search Query
         search_query = request.GET.get('search_q')
         if search_query:
@@ -160,6 +159,7 @@ def dashboard_views(request):
         count_color      = Color.objects.count()
         count_brand      = Brand.objects.count()
         latest_product   = Product.objects.all().order_by('-id')[:12]
+
         context = {
             'count_product'  : count_product,
             'count_category' : count_category,
@@ -177,8 +177,8 @@ def dashboard_views(request):
 # Show Product admin panel
 class Products_View(View):
     def get(self, request):
-        products = Product.objects.all()[:8]
-        context = {
+        products    = Product.objects.all()[:8]
+        context     = {
             'products' : products
         }
         template_name = 'admin/products.html'

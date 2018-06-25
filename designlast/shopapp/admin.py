@@ -10,7 +10,7 @@ admin.site.register(Category)
 
 
 class PorductModel(admin.ModelAdmin):
-    list_display = ['name', 'category', 'color', 'brand_name', 'publish_on', 'update_on']
-    date_hierarchy = 'publish_on'
-    list_per_page = 15
+    list_display    = ['name', 'category', 'color', 'brand_name', 'publish_on', 'update_on']
+    date_hierarchy  = 'publish_on'
+    list_per_page   = 15
 admin.site.register(Product, PorductModel)
