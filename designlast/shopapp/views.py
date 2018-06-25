@@ -15,23 +15,23 @@ from django.contrib import messages
 # Create your views here.
 def homepage(request):
 
-    product_search = Product.objects.all()
-    slider_obj = Slider.objects.all()
-    latest_product = Product.objects.filter(category__id = 2).order_by('-id')[:6]
-    best_seller = Product.objects.filter(category__id = 3).order_by('-id')[:5]
-    featured = Product.objects.filter(category__id = 4).order_by('-id')[:9]
+    product_search      = Product.objects.all()
+    slider_obj          = Slider.objects.all()
+    latest_product      = Product.objects.filter(category__id = 2).order_by('-id')[:6]
+    best_seller         = Product.objects.filter(category__id = 3).order_by('-id')[:5]
+    featured            = Product.objects.filter(category__id = 4).order_by('-id')[:9]
     best_seller_galllery = Product.objects.filter(category__id = 3).order_by('-id')[:9]
     special = Product.objects.filter(category__id = 5).order_by('-id')[:9]
     cat_menu = Category.objects.all()
 
     context = {
-        'slider_obj' : slider_obj,
-        'latest_product' : latest_product,
-        'best_seller' : best_seller,
-        'featured' : featured,
-        'best_seller_galllery' : best_seller_galllery,
-        'special' : special,
-        'cat_menu' : cat_menu,
+        'slider_obj'            : slider_obj,
+        'latest_product'        : latest_product,
+        'best_seller'           : best_seller,
+        'featured'              : featured,
+        'best_seller_galllery'  : best_seller_galllery,
+        'special'               : special,
+        'cat_menu'              : cat_menu,
     }
     return render(request, 'design/index.html', context)
 
@@ -44,39 +44,38 @@ class Single_page_views(View):
         related_porduct = Product.objects.filter(category = single_page.category).exclude(id = id)[:4]
         color = Color.objects.all()
         context = {
-            'single_product' : single_page,
-            'related_porduct' : related_porduct,
-            'color' : color,
+            'single_product'    : single_page,
+            'related_porduct'   : related_porduct,
+            'color'             : color,
         }
         return render(request, 'design/shop-single-product-v1.html', context)
 
 
 # Category Product
 class Category_View(View):
-
     def get(self, request, name):
-        category_product = Product.objects.filter(category__name = name)
-        category_by_item = Category.objects.all()
-        title_category = get_object_or_404(Category, name = name)
+        category_product    = Product.objects.filter(category__name = name)
+        category_by_item    = Category.objects.all()
+        title_category      = get_object_or_404(Category, name = name)
         brand_name = Brand.objects.all()
 
         # product paginator
-        product_pagination = Product.objects.all()
-        paginator = Paginator(product_pagination, 6)
-        page = request.GET.get('page')
+        product_pagination  = Product.objects.all()
+        paginator           = Paginator(product_pagination, 6)
+        page                = request.GET.get('page')
         contacts = paginator.get_page(page)
 
         # Search Query
-        search_product_q = Product.objects.all()
-        search_query = request.GET.get('search_q')
+        search_product_q    = Product.objects.all()
+        search_query        = request.GET.get('search_q')
         if search_query:
             category_by_item = category_by_item.filter(name__icontains = search_query)
 
         context = {
-            'cat' : contacts,
-            'cat_widget_item' : category_by_item,
-            'brand_name' : brand_name,
-            'title_category' : title_category
+            'cat'               : contacts,
+            'cat_widget_item'   : category_by_item,
+            'brand_name'        : brand_name,
+            'title_category'    : title_category
         }
         return render(request, 'design/shop-sidebar-left.html', context)
 
@@ -99,6 +98,7 @@ class Shop_Project_Views(View):
         return render(request, template_name, context)
 
 
+
 # Contact views
 def Contact_Us_Views(request):
     # Contact form
@@ -107,8 +107,8 @@ def Contact_Us_Views(request):
     else:
         form = Contact_Forms(request.POST)
         if form.is_valid():
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
+            name    = form.cleaned_data['name']
+            email   = form.cleaned_data['email']
             message = form.cleaned_data['message']
 
             try:
@@ -126,7 +126,6 @@ def Contact_Us_Views(request):
 
 # About Us
 class About_us_Views(View):
-
     def get(self, request):
         template_name = 'design/about.html'
         return render(request,template_name)
@@ -134,7 +133,6 @@ class About_us_Views(View):
 
 # User login views
 def login_views(request):
-
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -150,15 +148,12 @@ def login_views(request):
 
 # User lgout views
 def logout_views(request):
-
     logout(request)
     return redirect(login_views)
 
 
-
 # Dashboard views
 def dashboard_views(request):
-
     if request.user.is_authenticated:
         count_product    = Product.objects.count()
         count_category   = Category.objects.count()
@@ -181,7 +176,6 @@ def dashboard_views(request):
 
 # Show Product admin panel
 class Products_View(View):
-
     def get(self, request):
         products = Product.objects.all()[:8]
         context = {
@@ -194,7 +188,6 @@ class Products_View(View):
 
 # Add New Product
 def add_prodct_views(request):
-
     if request.user.is_authenticated:
         form = AddNewProduct()
         if request.method == 'POST':
@@ -217,7 +210,6 @@ def add_prodct_views(request):
 
 # Add New Slider
 def slider_views(request):
-
     if request.user.is_authenticated:
         slider_obj = Slider.objects.all().order_by('-id')
         form = Slider_Form()
@@ -229,8 +221,8 @@ def slider_views(request):
                 messages.add_message(request, messages.INFO, 'Slider added successfully')
                 return redirect(slider_views)
         context = {
-            'form' : form,
-            'slider_obj' : slider_obj
+            'form'      : form,
+            'slider_obj': slider_obj
         }
         template_name = 'admin/slider.html'
         return render(request, template_name, context)
@@ -241,7 +233,6 @@ def slider_views(request):
 
 # Add New Category
 def category_views(request):
-
     if request.user.is_authenticated:
         category_obj = Category.objects.all()
         form = CategoryForm()
@@ -265,7 +256,6 @@ def category_views(request):
 
 # Edit Product
 def edit_product_views(request, id):
-
     if request.user.is_authenticated:
         edit_obj = get_object_or_404(Product, id = id)
         if request.method == 'POST':
@@ -288,14 +278,13 @@ def edit_product_views(request, id):
 
 # List of Products
 def listOf_product_viwes(request):
-
     if request.user.is_authenticated:
         product_obj = Product.objects.all().order_by('-publish_on')
 
         # product paginator
-        paginator = Paginator(product_obj, 12)
-        page = request.GET.get('page')
-        contacts = paginator.get_page(page)
+        paginator   = Paginator(product_obj, 12)
+        page        = request.GET.get('page')
+        contacts    = paginator.get_page(page)
 
         context = {
             'product_obj' : contacts
@@ -309,7 +298,6 @@ def listOf_product_viwes(request):
 
 # Add New Color
 def add_Color_Views(request):
-
     if request.user.is_authenticated:
         color_obj = Color.objects.all()
         form = AddingColor_Form()
@@ -331,7 +319,6 @@ def add_Color_Views(request):
 
 # Add New Brand
 def adding_brand_views(request):
-
     if request.user.is_authenticated:
         brand_obj = Brand.objects.all()
         form = AddingBrand_Form()
@@ -376,7 +363,6 @@ def update_brand_views(request, name):
 
 # Delete Products
 def delete_product_viwes(request, id):
-
     if request.user.is_authenticated:
         delete_obj = get_object_or_404(Product, id = id)
         delete_obj.delete()
@@ -388,7 +374,6 @@ def delete_product_viwes(request, id):
 
 # Delete Category
 def deleteCateogry_Views(request, id):
-
     if request.user.is_authenticated:
         delete_obj = get_object_or_404(Category, id = id)
         delete_obj.delete()
@@ -400,7 +385,6 @@ def deleteCateogry_Views(request, id):
 
 # Delete Slider
 def deleteSlider_views(request, id):
-
     if request.user.is_authenticated:
         delete_slider_obj = get_object_or_404(Slider, id = id)
         delete_slider_obj.delete()
@@ -412,7 +396,6 @@ def deleteSlider_views(request, id):
 
 # Delete Color
 def deleteColor_views(request, id):
-
     if request.user.is_authenticated:
         delete_color_obj = get_object_or_404(Color, id = id)
         delete_color_obj.delete()
@@ -424,7 +407,6 @@ def deleteColor_views(request, id):
 
 # Delete Brand
 def deleteBrand_views(request, id):
-
     if request.user.is_authenticated:
         delete_brand = get_object_or_404(Brand, id = id)
         delete_brand.delete()
@@ -437,7 +419,6 @@ def deleteBrand_views(request, id):
 
 # Update Cateogry
 def update_caategroy(request, name):
-
     if request.user.is_authenticated:
         update_cat_obj = get_object_or_404(Category, name=name)
         form = CategoryForm(request.POST, instance = update_cat_obj)
