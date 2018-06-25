@@ -360,6 +360,28 @@ def adding_brand_views(request):
 
 
 
+# update/edit Brand
+def update_brand_views(request, name):
+    if request.user.is_authenticated:
+        updte_brand = get_object_or_404(Brand, name = name)
+        if request.method == 'POST':
+            form = AddingBrand_Form(request.POST, instance = updte_brand)
+            if form.is_valid():
+                form.save()
+                messages.add_message(request, messages.INFO, 'Brand update successfully')
+                return redirect(adding_brand_views)
+        else:
+            form = AddingBrand_Form(instance = updte_brand)
+        context = {
+            'form' : form,
+        }
+        template_name = 'admin/brand.html'
+        return render(request, template_name, context)
+    else:
+        return redirect(login_views)
+
+
+
 # Delete Products
 def delete_product_viwes(request, id):
 

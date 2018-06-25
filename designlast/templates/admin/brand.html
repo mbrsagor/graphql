@@ -15,7 +15,6 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
 
-
             <!-- End message framwork -->
             {% if messages %}
             <div class="messages">
@@ -27,7 +26,7 @@
             <!-- End message framwork -->
 
                 <form method="POST">
-                    
+
                   {% csrf_token %}
                     <div class="form-group">
                         <label>Adding Products Brand</label>
@@ -47,6 +46,7 @@
                       <tr>
                         <th>Brand Name</th>
                         <th>Create At</th>
+                        <th>Update Brand</th>
                         <th>Delete Brand</th>
                       </tr>
                     </thead>
@@ -56,6 +56,7 @@
                       <tr>
                         <th>{{brand.name}}</th>
                         <th>{{brand.create_at}}</th>
+                        <th><a href="{% url 'update_brand_views' brand.name %}">Update</a></th>
                         <th><a href="{% url 'deleteBrand_views' brand.id %}">Delete</a></th>
                       </tr>
                       {% endfor %}
