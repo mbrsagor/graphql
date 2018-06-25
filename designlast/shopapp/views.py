@@ -4,7 +4,6 @@ from django.views import View
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import *
-
 from .form import Contact_Forms, AddNewProduct, Slider_Form, CategoryForm, AddingColor_Form, AddingBrand_Form
 # paginator
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -24,12 +23,6 @@ def homepage(request):
     best_seller_galllery = Product.objects.filter(category__id = 3).order_by('-id')[:9]
     special = Product.objects.filter(category__id = 5).order_by('-id')[:9]
     cat_menu = Category.objects.all()
-
-    # Search  Query
-    search_query = request.GET.get('search_q')
-    if search_query:
-        product_search = product_search.filter(name__icontains = search_query)
-
 
     context = {
         'slider_obj' : slider_obj,
@@ -390,7 +383,6 @@ def delete_product_viwes(request, id):
 
 
 
-
 # Delete Category
 def deleteCateogry_Views(request, id):
 
@@ -401,8 +393,6 @@ def deleteCateogry_Views(request, id):
         return redirect(category_views)
     else:
         return redirect(login_views)
-
-
 
 
 # Delete Slider
