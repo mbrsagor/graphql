@@ -91,7 +91,6 @@ class Category_View(View):
 
 # Shop Products
 class Shop_Project_Views(View):
-
     def get(self, request):
         all_products = Product.objects.all()
 
@@ -109,7 +108,7 @@ class Shop_Project_Views(View):
 
 # Contact views
 def Contact_Us_Views(request):
-
+    # Contact form
     if request.method == 'GET':
         form = Contact_Forms()
     else:
@@ -137,8 +136,17 @@ def Contact_Us_Views(request):
 class About_us_Views(View):
 
     def get(self, request):
+        all_products = Product.objects.all()
+        # Search Query
+        search_query = request.GET.get('search_q')
+        if search_query:
+            all_products = all_products.filter(name__icontains = search_query)
+        context = {
+            'all_products' : all_products
+        }
+
         template_name = 'design/about.html'
-        return render(request,template_name)
+        return render(request,template_name, context)
 
 
 # User login views
@@ -334,8 +342,6 @@ def add_Color_Views(request):
     return redirect(login_views)
 
 
-
-
 # Add New Brand
 def adding_brand_views(request):
 
@@ -357,7 +363,6 @@ def adding_brand_views(request):
         return render(request, template_name, context)
     else:
         return redirect(login_views)
-
 
 
 # update/edit Brand

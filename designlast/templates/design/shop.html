@@ -1,7 +1,7 @@
 {% extends 'app/base.html' %}
 {% load static %}
 
-{% block title %} Shoppage {% endblock %}
+{% block title %} Shoppage|| Designlast {% endblock %}
 
 {% block content %}
 
@@ -25,14 +25,11 @@
                     <div class="col-sm-12">
                         <div class="row">
                             <div class="col-sm-12 text-left">
-                                <h2 style="margin-top: -50px" class="title">Shop Shop</h2>
+                                <h2 style="margin-top: -50px" class="title">Shop Page</h2>
                             </div><!-- end col -->
                         </div><!-- end row -->
-
                         <hr class="spacer-5"><hr class="spacer-20 no-border">
-
                         <div class="row column-3">
-
                           {% if all_products %}
                           {% for item in all_products %}
                             <div class="col-sm-6 col-md-3">
@@ -57,27 +54,9 @@
                             {% endfor %}
                             {% endif %}
                         </div><!-- end row -->
-
                         <hr class="spacer-10 no-border">
-
-                        <div class="row">
-                            <div class="col-sm-12 text-center">
-                                <nav>
-                                    <ul class="pagination">
-                                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li class="active"><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-                                    </ul>
-                                </nav>
-                            </div><!-- end col -->
-                        </div><!-- end row -->
                     </div><!-- end col -->
                 </div><!-- end row -->
-
             </div><!-- end container -->
         </section>
         <!-- end section -->
