@@ -119,7 +119,6 @@ def Contact_Us_Views(request):
     context = {
         'form' : form,
     }
-
     template_name = 'design/contact.html'
     return render(request, template_name, context)
 
@@ -161,13 +160,17 @@ def logout_views(request):
 def dashboard_views(request):
 
     if request.user.is_authenticated:
-        count_product = Product.objects.count()
-        count_category = Category.objects.count()
-        latest_product = Product.objects.all().order_by('-id')[:12]
+        count_product    = Product.objects.count()
+        count_category   = Category.objects.count()
+        count_color      = Color.objects.count()
+        count_brand      = Brand.objects.count()
+        latest_product   = Product.objects.all().order_by('-id')[:12]
         context = {
-            'count_product' : count_product,
+            'count_product'  : count_product,
             'count_category' : count_category,
             'latest_product' : latest_product,
+            'count_color'    : count_color,
+            'count_brand'    : count_brand,
         }
         template_name = 'admin/dashboard.html'
         return render(request, template_name, context)
