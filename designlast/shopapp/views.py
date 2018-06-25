@@ -136,17 +136,8 @@ def Contact_Us_Views(request):
 class About_us_Views(View):
 
     def get(self, request):
-        all_products = Product.objects.all()
-        # Search Query
-        search_query = request.GET.get('search_q')
-        if search_query:
-            all_products = all_products.filter(name__icontains = search_query)
-        context = {
-            'all_products' : all_products
-        }
-
         template_name = 'design/about.html'
-        return render(request,template_name, context)
+        return render(request,template_name)
 
 
 # User login views
