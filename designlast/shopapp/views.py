@@ -65,12 +65,6 @@ class Category_View(View):
         page                = request.GET.get('page')
         contacts            = paginator.get_page(page)
 
-        # Search Query
-        search_product_q    = Product.objects.all()
-        search_query        = request.GET.get('search_q')
-        if search_query:
-            category_by_item = category_by_item.filter(name__icontains = search_query)
-
         context = {
             'cat'               : contacts,
             'cat_widget_item'   : category_by_item,
@@ -81,7 +75,7 @@ class Category_View(View):
 
 
 
-# Shop Products
+# Shop Products search query
 class Shop_Project_Views(View):
     def get(self, request):
         all_products = Product.objects.all()
@@ -95,7 +89,6 @@ class Shop_Project_Views(View):
         }
         template_name = 'design/shop.html'
         return render(request, template_name, context)
-
 
 
 # Contact views
@@ -230,7 +223,6 @@ def slider_views(request):
         return redirect(login_views)
 
 
-
 # Add New Category
 def category_views(request):
     if request.user.is_authenticated:
@@ -251,7 +243,6 @@ def category_views(request):
         return render(request, template_name, context)
     else:
         return redirect(login_views)
-
 
 
 # Edit Product
@@ -275,7 +266,6 @@ def edit_product_views(request, id):
         return redirect(login_views)
 
 
-
 # List of Products
 def listOf_product_viwes(request):
     if request.user.is_authenticated:
@@ -293,7 +283,6 @@ def listOf_product_viwes(request):
         return render(request, template_name, context)
     else:
         return redirect(login_views)
-
 
 
 # Add New Color
@@ -414,7 +403,6 @@ def deleteBrand_views(request, id):
         return redirect(dashboard_views)
     else:
         return redirect(login_views)
-
 
 
 # Update Cateogry
