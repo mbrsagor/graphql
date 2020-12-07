@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'books',
+    'posts',
     # 3rd party apps
     'rest_framework',
     'corsheaders',
