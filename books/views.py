@@ -1,7 +1,7 @@
 from rest_framework import generics
 
-from .models import Book
-from .serializers import BookSerializer
+from .models import Book, Todo
+from .serializers import BookSerializer, TodoSerializer
 
 
 class BookAPIView(generics.ListAPIView):
@@ -27,3 +27,8 @@ class DetailBookAPIView(generics.RetrieveAPIView):
 class DeleteBookAPIView(generics.DestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+
+
+class TodoCreateListViewAPI(generics.ListCreateAPIView):
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
