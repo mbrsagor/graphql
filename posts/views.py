@@ -1,10 +1,10 @@
 from rest_framework import generics
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAdminUser
 
 from .models import Post
 from .serializers import PostSerializer
-from .permissions import IsAuthorOrReadOnly  # new
+from .permissions import IsAuthorOrReadOnly
 
 
 class PostListApiview(generics.ListCreateAPIView):
@@ -21,4 +21,4 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
 class PostViewSet(ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = (AllowAny,)
+    permission_classes = (IsAdminUser,)
