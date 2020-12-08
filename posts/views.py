@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework.viewsets import ModelViewSet
 
 from .models import Post
 from .serializers import PostSerializer
@@ -14,3 +15,8 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = (IsAuthorOrReadOnly,)
+
+
+class PostViewSet(ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
