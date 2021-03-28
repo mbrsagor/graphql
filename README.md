@@ -13,7 +13,7 @@ Install `postgres` database in the django app
 pip install django gunicorn psycopg2
 ```
 
-Install Django default restful api (DRF). 1st install virtualenv in your project then follow the command line.
+Run the Django project locally in your dev server. 1st install virtualenv in your project then follow the command line.
 ```
 source venv/bin/activate
 pip install djangorestframework
