@@ -17,6 +17,7 @@ Install Django default restful api (DRF). 1st install virtualenv in your project
 ```
 source venv/bin/activate
 pip install djangorestframework
+pip install -r requirements.txt
 ```
 ###### Configuration database in the project. Open settings.py then follow the instraction
 
