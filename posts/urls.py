@@ -1,4 +1,4 @@
-from .views import PostListApiview, PostDetail, PostViewSet, UserList, UserDetail
+from .views import PostListApiview, CateoryViewSet, PostDetail, PostViewSet, UserList, UserDetail
 
 from django.urls import path
 
@@ -7,6 +7,7 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 
 router.register('posts', PostViewSet)
+router.register('category', CateoryViewSet)
 
 urlpatterns = [
     path('post/', PostListApiview.as_view()),
