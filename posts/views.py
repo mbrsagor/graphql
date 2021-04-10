@@ -3,9 +3,15 @@ from rest_framework import generics
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAdminUser
 
-from .models import Post
-from .serializers import PostSerializer, UserSerializer
+from .models import Post, Category
+from .serializers import PostSerializer, UserSerializer, CategorySerializer
 from .permissions import IsAuthorOrReadOnly
+
+
+
+class CateoryViewSet(ModelViewSet):
+    querset = Category.objects.all()
+    serializer_class = CategorySerializer
 
 
 class PostListApiview(generics.ListCreateAPIView):
