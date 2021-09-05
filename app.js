@@ -1,13 +1,9 @@
-var { graphql, buildSchema } = require('graphql');
+import express from 'express';
 
-var schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
+const app = express();
 
-var root = { hello: () => 'Hello world!' };
+app.get('/', (req, res) =>{
+    res.send("GraphQl are ready...");
+})
 
-graphql(schema, '{ hello }', root).then((response) => {
-  console.log(response);
-});
+app.listen(3000, () => console.log("GraphQl server is listening 3000 port"));
