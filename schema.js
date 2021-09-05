@@ -36,7 +36,7 @@ const schema = (`
         language: String
         email: String
         stack: Stack
-        teachingAssists: [TeachingAssist]!
+        teachingAssists: [TeachingAssistInput]!
     }
 
     input TeachingAssistInput{
