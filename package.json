@@ -1,0 +1,15 @@
+{
+  "name": "graphSql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/mbrsagor/graphql.git",
+  "author": "mbrsagor <mbrsagor@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "graphpack": "^1.0.9"
+  },
+  "scripts": {
+    "dev": "graphpack",
+    "build": "graphpack build"
+}
+}
