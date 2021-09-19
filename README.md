@@ -4,15 +4,26 @@
 ###### What is Graphql?
 This is my simple `GraphQL` web-app which has very quite and simple example of graphql user management system. Be like `Query` and `Mutation` basic operations.
 
-##### Download the repository and run the application in your local machine:
+##### Download the repository and run the `Backend` application in your local machine:
 please follow the below instructions:
 
 ```bash
 git clone https://github.com/mbrsagor/graphql.git
-cd graphql
+cd graphql/server
 yarn install
 yarn dev
 ```
+Runs the app in the development mode.\
+Open [http://localhost:4000](http://localhost:4000) to view it in the browser.
+
+##### Run the `Frontend` part:
+```bash
+cd client
+yarn install
+yarn start
+```
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ###### For the `Query` response body:
 ```javascript
@@ -37,8 +48,7 @@ mutation {
 }
 ```
 
-
-#### Example of GraphQL:
+#### Example of GraphQL if you want to create new one backend:
 > Basically if you want to setup newly I recommend you please follow the below instructions:
 ```bash
 yarn init 
