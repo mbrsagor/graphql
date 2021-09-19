@@ -2,7 +2,7 @@
 > JavaScript Graphql Repo.
 
 ###### What is Graphql?
-GraphQL is an open-source data query and manipulation language for APIs, and a runtime for fulfilling queries with existing data. GraphQL was developed internally by Facebook in 2012 before being publicly released in 2015.
+This is my simple `GraphQL` web-app which has very quite and simple example of graphql user management system. Be like `Query` and `Mutation` basic operations.
 
 ##### Download the repository and run the application in your local machine:
 please follow the below instructions:
@@ -14,7 +14,45 @@ yarn install
 yarn dev
 ```
 
+###### For the `Query` response body:
+```javascript
+query {
+  users {
+    id
+    name
+    email
+    age
+  }
+}
+```
+###### For the `Mutation` (create/post) response body:
+```javascript
+mutation {
+  createUser(id: 6, name: "Mamun-khan", email: "mamun@gmail.com", age: 29) {
+    id
+    name
+    email
+    age
+  }
+}
+```
+
+
 #### Example of GraphQL:
+> Basically if you want to setup newly I recommend you please follow the below instructions:
+```bash
+yarn init 
+yarn add --dev graphpack
+```
+Then add the code for you project `package.json` file.
+```json
+"scripts": {
+    "dev": "graphpack",
+    "build": "graphpack build"
+}
+```
+N:B: Then continue to the following steps which possesses my project `src` directory.
+
 
 ```bash
 npm install graphql
