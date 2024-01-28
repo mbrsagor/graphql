@@ -83,3 +83,27 @@ graphql(schema, '{ sagor }', root).then((response) => {
   console.log(response);
 });
 ```
+
+> Frontend
+```javascript
+import {
+  graphql,
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLString,
+} from 'graphql';
+
+var schema = new GraphQLSchema({
+  query: new GraphQLObjectType({
+    name: 'RootQueryType',
+    fields: {
+      hello: {
+        type: GraphQLString,
+        resolve() {
+          return 'world';
+        },
+      },
+    },
+  }),
+});
+```
